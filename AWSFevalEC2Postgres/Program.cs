@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddTransient<RepositoryDepartamentos>();
 string cadenaConexion =
-    "Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=hospital";
+    "Host=107.22.122.236;Port=5432;Username=postgres;Password=postgres;Database=hospital;sslmode=disable";
 builder.Services.AddDbContext<DepartamentosContext>
     (options => options.UseNpgsql(cadenaConexion));
 
