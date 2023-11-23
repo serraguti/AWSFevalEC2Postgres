@@ -1,6 +1,16 @@
+using AWSFevalEC2Postgres.Data;
+using AWSFevalEC2Postgres.Repositories;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddTransient<RepositoryDepartamentos>();
+string cadenaConexion =
+    "Host=localhost;Port=5432;Username=postgres;Password=postgres;Database=hospital";
+builder.Services.AddDbContext<DepartamentosContext>
+    (options => options.UseNpgsql(cadenaConexion));
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
